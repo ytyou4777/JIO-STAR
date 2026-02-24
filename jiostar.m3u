@@ -1,6 +1,7 @@
 # Pushed & updated by Clarity TV
 # Telegram: https://t.me/watch_clarity
 
+# ---------------=== Clarity TV | HOTSTAR ===-------------------
 
 #EXTM3U
 #EXTINF:-1 tvg-logo="https://img10.hotstar.com/image/upload/f_auto,q_90,w_384/sources/r1/cms/prod/1199/1752742701199-h" group-title="Clarity TV | VOOT | Jio Cinema",STAR VIJAY SUPER SINGER
@@ -325,6 +326,9 @@ https://livetv.hotstar.com/mp1/gec-india-1540057039/96454b89b9cd49df822108b6975a
 #EXTVLCOPT:http-user-agent=Hotstar;in.startv.hotstar/25.02.24.8.11169 (Android/15)
 #EXTHTTP:{"Cookie":"hdntl=exp=1771951084~acl=%2f*~id=5c1c32ce098663a2cd0855a2490b3d2f~data=hdntl~hmac=2806b731b2c64798ed798860f3ff796265ab641ddf3dddceb6ba62d806ec06a8","Origin":"https://www.hotstar.com","Referer":"https://www.hotstar.com/"}
 https://livetv.hotstar.com/mp2/gec-india-1540057081/5c13f17d142c4963a1c7bd54fcd421d5/index.mpd
+
+
+# ---------------=== Clarity TV | JIOTV+ ===-------------------
 
 
 #EXTM3U
