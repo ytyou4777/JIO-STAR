@@ -72,6 +72,13 @@ https://jiotvmblive.cdn.jio.com/bpk-tv/Star_Sports_HD1_BTS/output/index.mpd?__hd
 #EXTHTTP:{"cookie":"__hdnea__=st=1772044203~exp=1772130603~acl=/*~hmac=07be955aef13e4c565ca7ff3ffbb61becb41d1ee5481582128943aa20d1120fd"}
 https://jiotvmblive.cdn.jio.com/bpk-tv/Star_Sports_HD1_Hindi_BTS/output/index.mpd?__hdnea__=st=1772044203~exp=1772130603~acl=/*~hmac=07be955aef13e4c565ca7ff3ffbb61becb41d1ee5481582128943aa20d1120fd
 
+#EXTINF:-1 tvg-id="1122" tvg-language="Kannada" group-title="T20I World Cup" tvg-logo="https://jiotv.catchup.cdn.jio.com/dare_images/images/Star_Sports_2_Kannada.png",Star Sports 2 Kannada
+#KODIPROP:inputstream.adaptive.license_type=clearkey
+#KODIPROP:inputstream.adaptive.license_key=7af2add2968a56309519ac2680c18f25:f992a14e0def17ccdfe16f58c4ce56c5
+#EXTVLCOPT:http-user-agent=plaYtv/7.1.3 (Linux;Android 13) ygx/824.1 ExoPlayerLib/824.0
+#EXTHTTP:{"cookie":"__hdnea__=st=1772044203~exp=1772130603~acl=/*~hmac=07be955aef13e4c565ca7ff3ffbb61becb41d1ee5481582128943aa20d1120fd"}
+https://jiotvmblive.cdn.jio.com/bpk-tv/Star_Sports_2_Kannada_BTS/output/index.mpd?__hdnea__=st=1772044203~exp=1772130603~acl=/*~hmac=07be955aef13e4c565ca7ff3ffbb61becb41d1ee5481582128943aa20d1120fd
+
 # ---------------=== Clarity TV | HOTSTAR ===-------------------
 
 #EXTM3U
