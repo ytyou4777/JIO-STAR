@@ -77,10 +77,9 @@ jobs:
                       updated_lines.append(updated_line + "\n")
                       updated_headers += 1
                       
-                  elif "jiotvmblive.cdn.jio.com" in stripped and jio_token:
+                  elif "jiotvbpkmob.cdn.jio.com" in stripped:
                       clean_link = re.sub(r'([?&])__hdnea__=[^&]*', '', stripped)
-                      sep = "&" if "?" in clean_link else "?"
-                      updated_lines.append(f"{clean_link}{sep}{jio_token}\n")
+                      updated_lines.append(clean_link + "\n")
                       
                   # --- EVERYTHING ELSE ---
                   else:
