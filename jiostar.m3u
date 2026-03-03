@@ -60,7 +60,7 @@ https://star-sports-1.joker-verse.workers.dev/master.mpd
 #EXTHTTP:{"Cookie":"hdntl=exp=1772618072~acl=%2f*~id=c51d9cfcc8b74e10c57737fa5b0e2915~data=hdntl~hmac=20a50a86a1ba1e44517471ab6d1b12563bea8999a65812eafbb9046ed443982a","Origin":"https://www.hotstar.com","Referer":"https://www.hotstar.com/"}
 #https://livetv-push.hotstar.com/dash/live/2002465/sshd2livetvwv/master.mpd
 
-#EXTINF:-1 tvg-id="Star Sports 1 HD" tvg-logo="https://raw.githubusercontent.com/abusaeeidx/Tv-Channel-Logo/heads/main/CricHD/runded/16-by-xfireflix.png" group-title="T20I World Cup",Star Sports 1 HD
+#EXTINF:-1 tvg-id="Star Sports 1 HD" tvg-logo="https://raw.githubusercontent.com/abusaeeidx/Tv-Channel-Logo/heads/main/CricHD/runded/1-by-xfireflix.png" group-title="Clarity TV | VOOT | Jio Cinema",Star Sports Hindi 1 HD
 #KODIPROP:inputstream.adaptive.license_type=org.w3.clearkey
 #KODIPROP:inputstream.adaptive.license_key=fe7718fbb3fb4ba78c07cc0f578744e6:624e24b1843b459fab0a949609416f0d
 #KODIPROP:inputstream.adaptive.manifest_type=mpd
