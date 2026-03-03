@@ -43,7 +43,7 @@
 #EXTINF:-1 tvg-logo="https://img10.hotstar.com/image/upload/f_auto,q_90,w_384/sources/r1/cms/prod/8704/1764056908704-a" group-title=" T20I World Cup",WILLOW ENG(NS PLAYER)
 #https://a96aivottlinear-a.akamaihd.net/OTTB/iad-nitro/enc/rfh96ivsaj/out/v1/01c215d79e0b44c893a295dbecc8b336/cenc.mpd?%7CdrmScheme=clearkey&drmLicense=151fcc077a8f254ac46580528b81f409:852dbcb36cc39cee1825da9cf5feafed
 
-#EXTINF:-1 tvg-id="Star Sports 1 HD.in" tvg-logo="https://raw.githubusercontent.com/abusaeeidx/Tv-Channel-Logo/heads/main/CricHD/runded/16-by-xfireflix.png" group-title="Sports",Star Sports 1 HD
+#EXTINF:-1 tvg-id="Star Sports 1 HD.in" tvg-logo="https://raw.githubusercontent.com/abusaeeidx/Tv-Channel-Logo/heads/main/CricHD/runded/16-by-xfireflix.png" group-title="T20I World Cup",Star Sports 1 HD
 #KODIPROP:inputstream.adaptive.license_type=org.w3.clearkey
 #KODIPROP:inputstream.adaptive.license_key=fe7718fbb3fb4ba78c07cc0f578744e6:624e24b1843b459fab0a949609416f0d
 #KODIPROP:inputstream.adaptive.manifest_type=mpd
