@@ -70,8 +70,8 @@ https://livetv-push.hotstar.com/dash/live/2002464-b/sshd1livetvwv/master.mpd
 #KODIPROP:inputstream.adaptive.license_type=clearkey
 #KODIPROP:inputstream.adaptive.license_key=fe7718fbb3fb4ba78c07cc0f578744e6:624e24b1843b459fab0a949609416f0d
 #EXTVLCOPT:http-user-agent=Hotstar;in.startv.hotstar/25.02.24.8.11169 (Android/15)
-#EXTHTTP:{"Cookie":"hdntl=exp=1772770039~acl=%2f*~id=96d78302be6e0908eb4bcbe0610c346b~data=hdntl~hmac=6b589701a382977960ff4022a2aeb1fbec5be7897f9d0d8b96290b7886d42201","Origin":"https://www.hotstar.com","Referer":"https://www.hotstar.com/"}
-#https://livetv-push.hotstar.com/dash/live/2002465/sshd2livetvwv/master.mpd
+#EXTHTTP:{"Cookie":"hdntl=exp=1772798111~acl=*sshd2livetv*~id=a300fcca2af4dc56550b3d5cf494f40c~data=hdntl~hmac=bee158a67253acadd104fa4a8b57b76dceb7865e62ff8b8f38054c537fa12cd5","Origin":"https://www.hotstar.com","Referer":"https://www.hotstar.com/"}
+https://livetv-push.hotstar.com/dash/live/2002465/sshd2livetvwv/master.mpd
 
 
 
