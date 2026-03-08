@@ -5,12 +5,12 @@
 # ---------------=== Clarity TV | T20I ===-------------------
 
 
-#EXTINF:-1 tvg-id="1106" group-title="T20I World Cup" tvg-logo="https://pbs.twimg.com/media/G7vaGYkaMAIIECs.jpg",Hot✨-English
+#EXTINF:-1 tvg-id="1106" group-title="T20I World Cup" tvg-logo="https://pbs.twimg.com/media/G7vaGYkaMAIIECs.jpg",Hot✨-English 4K
 #EXTVLCOPT:http-user-agent=Hotstar;in.startv.hotstar/25.11.24.0.4237 (Android/13)
 #EXTHTTP:{"Cookie":"hdntl=exp=1773059401~acl=/*~data=hdntl~hmac=9d0990cfc91f24a77ae62ca534e62b5f805ee177d8932f8d187fe50abf6c6475","Origin":"https://www.hotstar.com","Referer":"https://www.hotstar.com/"}
 https://live11p.akt.hotstar-cdn.net/cmaf/live/2108387/inallow-icct20wc-2026/eng/1540062397/15mindvrm013a4e2de894204cfc98f4f64e2f73affc08march2026/master_a.m3u8
 
-#EXTINF:-1 tvg-id="1106" group-title="T20I World Cup" tvg-logo="https://pbs.twimg.com/media/G7vaGYkaMAIIECs.jpg",Hot✨-Hindi
+#EXTINF:-1 tvg-id="1106" group-title="T20I World Cup" tvg-logo="https://pbs.twimg.com/media/G7vaGYkaMAIIECs.jpg",Hot✨-Hindi 4K
 #EXTVLCOPT:http-user-agent=Hotstar;in.startv.hotstar/25.11.24.0.4237 (Android/13)
 #EXTHTTP:{"Cookie":"hdntl=exp=1773059401~acl=/*~data=hdntl~hmac=9d0990cfc91f24a77ae62ca534e62b5f805ee177d8932f8d187fe50abf6c6475","Origin":"https://www.hotstar.com","Referer":"https://www.hotstar.com/"}
 https://live12p.akt.hotstar-cdn.net/cmaf/live/2108404/inallow-icct20wc-2026/hin/1540062397/15mindvrm013a4e2de894204cfc98f4f64e2f73affc08march2026/master_a.m3u8
