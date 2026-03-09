@@ -11,12 +11,6 @@
 #EXTHTTP:{"Origin":"https://jiotv.com/","Referer":"https://jiotv.com/"}
 https://keys.vodep39240327.workers.dev/mpd/1178
 
-#EXTINF:-1 tvg-id="1178" group-title="Entertainment" tvg-logo="https://jiotv.catchup.cdn.jio.com/dare_images/images/Star_Plus_HD.png",Star Plus HD
-#KODIPROP:inputstream.adaptive.license_type=clearkey
-#KODIPROP:inputstream.adaptive.license_key=6f7b7241b2935a909d389fe318e5baaa:65783311644973348f359dc154bb41db
-
-#EXTHTTP:{"cookie":"__hdnea__=st=1772937957~exp=1773024357~acl=/*~hmac=d43c7771d4054af99c2353d4119214b32c022e716dd521e998090e86f694f134"}
-https://jiotvpllive.cdn.jio.com/bpk-tv/Star_Plus_HD_BTS/output/index.mpd?__hdnea__=st=1772937957~exp=1773024357~acl=/*~hmac=d43c7771d4054af99c2353d4119214b32c022e716dd521e998090e86f694f134
 
 #EXTINF:-1 tvg-id="1179" group-title="Entertainment" tvg-logo="https://jiotv.catchup.cdn.jio.com/dare_images/images/Star_Plus.png",Star Plus
 #KODIPROP:inputstream.adaptive.license_type=clearkey
