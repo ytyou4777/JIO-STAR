@@ -72,28 +72,21 @@ jobs:
                   line = local_lines[i].rstrip()
                   # Case 1: line is a URL (possibly preceded by #EXTHTTP)
                   if line.startswith("http") and ("cdn.jio.com" in line or "hotstar.com" in line):
-                      # Determine which mapping to use
                       if "cdn.jio.com" in line:
                           domain_pattern = r"cdn\.jio\.com"
                           mapping = jio_mapping
-                      elif "hotstar.com" in line:
+                      else:
                           domain_pattern = r"hotstar\.com"
                           mapping = hs_mapping
-                      else:
-                          new_lines.append(line)
-                          i += 1
-                          continue
 
                       path = extract_path(line, domain_pattern)
                       if path and path in mapping:
-                          # Replace with remote version
                           exthttp_new, url_new = mapping[path]
                           if exthttp_new:
                               new_lines.append(exthttp_new)
                           new_lines.append(url_new)
                       else:
                           # No match: keep original
-                          # But we might still want to update token? Not possible without path match.
                           new_lines.append(line)
                       i += 1
 
@@ -114,9 +107,8 @@ jobs:
                               if exthttp_new:
                                   new_lines.append(exthttp_new)
                               else:
-                                  # Remote has no EXTHTTP, so we keep original EXTHTTP? Or omit?
-                                  # Usually remote has EXTHTTP, but if not, we can keep old or skip.
-                                  # We'll keep original EXTHTTP to avoid breaking.
+                                  # Remote has no EXTHTTP, so we keep original EXTHTTP? 
+                                  # Usually remote has it, but if not, we keep old to avoid breaking.
                                   new_lines.append(line)
                               new_lines.append(url_new)
                           else:
