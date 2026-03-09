@@ -2,7 +2,7 @@ name: Update JioStar Playlist
 
 on:
   schedule:
-    - cron: '*/10 * * * *'
+    - cron: '0 */1 * * *' # Refreshes every 3 hours to keep Hotstar tokens active
   workflow_dispatch:
 
 jobs:
@@ -10,18 +10,18 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout Repo
+      - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Setup Python
+      - name: Set up Python
         uses: actions/setup-python@v4
         with:
           python-version: '3.x'
 
-      - name: Install Requests
+      - name: Install dependencies
         run: pip install requests
 
-      - name: Update Playlist
+      - name: Process Jio and Hotstar Updates
         run: |
           python <<EOF
           import requests
@@ -30,155 +30,81 @@ jobs:
           import sys
 
           m3u_file = "jiostar.m3u"
+          jio_worker = "https://raw.githubusercontent.com/pk3011/pkjtv/refs/heads/main/jtv.m3u"
+          hotstar_worker = "https://voot.vodep39240327.workers.dev?voot.m3u"
 
-          jio_source = "https://raw.githubusercontent.com/pk3011/pkjtv/refs/heads/main/jtv.m3u"
-          hotstar_source = "https://voot.vodep39240327.workers.dev?voot.m3u"
+          try:
+              # 1. Fetch Jio Cookie
+              jio_res = requests.get(jio_worker, timeout=15)
+              jio_match = re.search(r'__hdnea__=([^"\'\s&]+)', jio_res.text)
+              jio_token = f"__hdnea__={jio_match.group(1)}" if jio_match else None
+                            
+              # 2. Fetch Hotstar Data
+              hs_res = requests.get(hotstar_worker, timeout=20)
+              hs_match = re.search(r'hdntl=exp=[^&"\'\s]+', hs_res.text)
+              hs_token = hs_match.group(0) if hs_match else None
 
-          print("Fetching upstream playlists...")
+              if not os.path.exists(m3u_file):
+                  print(f"Error: {m3u_file} not found")
+                  sys.exit(1)
 
-          jio_res = requests.get(jio_source, timeout=20)
+              with open(m3u_file, 'r', encoding='utf-8') as f:
+                  lines = f.readlines()
 
-          if jio_res.status_code != 200:
-              print("Failed to fetch Jio playlist")
-              sys.exit(1)
+              updated_lines = []
+              updated_headers = 0
 
-          jio_lines = jio_res.text.splitlines()
-
-          jio_map = {}
-          last_extinf = None
-
-          for line in jio_lines:
-
-              line=line.strip()
-
-              if line.startswith("#EXTINF"):
-                  last_extinf=line
-
-              elif line.startswith("http") and last_extinf:
-
-                  name=re.search(r',(.+)',last_extinf)
-
-                  if name:
-                      jio_map[name.group(1).strip()] = line
-
-                  last_extinf=None
-
-
-          print("Extracting tokens...")
-
-          jio_token=None
-          jio_match=re.search(r'__hdnea__=[^&]+',jio_res.text)
-
-          if jio_match:
-              jio_token=jio_match.group(0)
-
-
-          hs_res=requests.get(hotstar_source,timeout=20)
-
-          hs_token=None
-          hs_match=re.search(r'hdntl=exp=[^&"]+',hs_res.text)
-
-          if hs_match:
-              hs_token=hs_match.group(0)
-
-
-          if not os.path.exists(m3u_file):
-              print("Playlist not found")
-              sys.exit(1)
-
-          print("Reading local playlist...")
-
-          with open(m3u_file,"r",encoding="utf-8") as f:
-              lines=f.readlines()
-
-          updated=[]
-          current_name=None
-          seen=set()
-
-          for line in lines:
-
-              stripped=line.strip()
-
-              if stripped.startswith("#EXTINF"):
-                  updated.append(line)
-                  name=re.search(r',(.+)',stripped)
-                  current_name=name.group(1).strip() if name else None
-                  continue
-
-
-              if stripped.startswith("http"):
-
-                  if current_name in jio_map:
-
-                      new_link=jio_map[current_name]
-
-                      if jio_token:
-
-                          if "__hdnea__" in new_link:
-                              new_link=re.sub(r'__hdnea__=[^&]+',jio_token,new_link)
-
-                          else:
-
-                              if "?" in new_link:
-                                  new_link+="&"+jio_token
-                              else:
-                                  new_link+="?"+jio_token
-
-                      if new_link in seen:
-                          continue
-
-                      seen.add(new_link)
-
-                      updated.append(new_link+"\n")
+              for line in lines:
+                  stripped = line.strip()
+                  
+                  # Skip processing if line is empty but keep it in the file
+                  if not stripped:
+                      updated_lines.append(line)
                       continue
+                                    
+                  # --- HANDLE HOTSTAR LINES ---
+                  if "#EXTHTTP" in stripped and "hdntl" in stripped and hs_token:
+                      updated_line = re.sub(r'hdntl=exp=[^"}]+', hs_token, stripped)
+                      updated_lines.append(updated_line + "\n")
+                                    
+                  elif "hotstar.com" in stripped and hs_token:
+                      updated_line = re.sub(r'hdntl=exp=[^&|]+', hs_token, stripped)
+                      updated_lines.append(updated_line + "\n")
 
+                  # --- HANDLE JIO LINES ---
+                  elif "#EXTHTTP" in stripped and "__hdnea__" in stripped and jio_token:
+                      updated_line = re.sub(r'__hdnea__=[^"}]+', jio_token, stripped)
+                      updated_lines.append(updated_line + "\n")
+                      updated_headers += 1
+                      
+                  elif "jiotvbpkmob.cdn.jio.com" in stripped:
+                      clean_link = re.sub(r'([?&])__hdnea__=[^&]*', '', stripped)
+                      updated_lines.append(clean_link + "\n")
+                      
+                  # --- EVERYTHING ELSE ---
+                  else:
+                      updated_lines.append(line)
 
-              if "hotstar.com" in stripped and hs_token:
+              # Save results back to the same file
+              with open(m3u_file, 'w', encoding='utf-8') as f:
+                  f.writelines(updated_lines)
+                            
+              print("Successfully updated Jio and Hotstar tokens in jiostar.m3u")
+              print(f"Updated {updated_headers} Jio headers.")
 
-                  stripped=re.sub(r'hdntl=exp=[^&]+',hs_token,stripped)
-
-                  if stripped in seen:
-                      continue
-
-                  seen.add(stripped)
-
-                  updated.append(stripped+"\n")
-                  continue
-
-
-              updated.append(line)
-
-
-          print("Saving playlist...")
-
-          with open(m3u_file,"w",encoding="utf-8") as f:
-              f.writelines(updated)
-
-
-          size=os.path.getsize(m3u_file)
-
-          print("Playlist size:",size)
-
-
-          if size > 95000000:
-              print("File too large, skipping commit")
-              sys.exit(0)
-
-          print("Playlist updated successfully")
+          except Exception as e:
+              print(f"Error: {e}")
+              sys.exit(1)
           EOF
 
-      - name: Commit and Push
+      - name: Commit and push changes
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
-
           git add jiostar.m3u
-
           if git diff --cached --quiet; then
-            echo "No changes"
+            echo "No changes detected (Tokens are the same)"
             exit 0
           fi
-
-          git commit -m "Auto Update: Jio & Hotstar tokens + links"
-
+          git commit -m "Automated update: Refreshed Jio and Hotstar tokens"
           git push
