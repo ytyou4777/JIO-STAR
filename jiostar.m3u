@@ -2027,7 +2027,7 @@ https://jiotvmblive.cdn.jio.com/bpk-tv/Express_TV_BTS/output/index.mpd?__hdnea__
 #EXTHTTP:{"cookie":"__hdnea__=st=1773041749~exp=1773128149~acl=/*~hmac=0353d96a89f88e11199d5203e2b0fae911f00470d25bec747ac588ae191e5bc0"}
 https://jiotvmblive.cdn.jio.com/bpk-tv/Sristi_TV_BTS/output/index.mpd?__hdnea__=st=1773041749~exp=1773128149~acl=/*~hmac=0353d96a89f88e11199d5203e2b0fae911f00470d25bec747ac588ae191e5bc0
 
-#EXTINF:-1 tvg-id="1224" group-title="JIOTV+ | Infotainment" tvg-logo="https://jiotv.catchup.cdn.jio.com/dare_images/images/Safari_TV.png",Safari TV 
+#EXTINF:-1 tvg-id="1224" group-title="JIOTV+ | Infotainment" tvg-logo="https://jiotv.catchup.cdn.jio.com/dare_images/images/Safari_TV.png",Safari TV
 #KODIPROP:inputstream.adaptive.license_type=clearkey
 #KODIPROP:inputstream.adaptive.license_key=321409877d675cab85262bc098cf59e1:da72943770842b5e8199c408d3b34a10
 #EXTVLCOPT:http-user-agent=@watch_clarity
@@ -2296,7 +2296,7 @@ https://jiotvmblive.cdn.jio.com/bpk-tv/Indradhanu_BTS/output/index.mpd?__hdnea__
 #EXTHTTP:{"cookie":"__hdnea__=st=1773041749~exp=1773128149~acl=/*~hmac=0353d96a89f88e11199d5203e2b0fae911f00470d25bec747ac588ae191e5bc0"}
 https://jiotvmblive.cdn.jio.com/bpk-tv/Pitaara_BTS/output/index.mpd?__hdnea__=st=1773041749~exp=1773128149~acl=/*~hmac=0353d96a89f88e11199d5203e2b0fae911f00470d25bec747ac588ae191e5bc0
 
-#EXTINF:-1 tvg-id="1262" group-title="JIOTV+ | Movies" tvg-logo="https://jiotv.catchup.cdn.jio.com/dare_images/images/PTC_Punjabi_Gold.png",PTC Punjabi Gold 
+#EXTINF:-1 tvg-id="1262" group-title="JIOTV+ | Movies" tvg-logo="https://jiotv.catchup.cdn.jio.com/dare_images/images/PTC_Punjabi_Gold.png",PTC Punjabi Gold
 #KODIPROP:inputstream.adaptive.license_type=clearkey
 #KODIPROP:inputstream.adaptive.license_key=0dda28b6f9d155cd8e2217acf180f7eb:79a3e8d1466cdf86a8a00c227c0f44d2
 #EXTVLCOPT:http-user-agent=@watch_clarity
@@ -2338,7 +2338,7 @@ https://jiotvmblive.cdn.jio.com/bpk-tv/Colors_Gujarati_Cinema_BTS/output/index.m
 #EXTHTTP:{"cookie":"__hdnea__=st=1773041749~exp=1773128149~acl=/*~hmac=0353d96a89f88e11199d5203e2b0fae911f00470d25bec747ac588ae191e5bc0"}
 https://jiotvmblive.cdn.jio.com/bpk-tv/AndPriveHD_MOB/WDVLive/index.mpd?__hdnea__=st=1773041749~exp=1773128149~acl=/*~hmac=0353d96a89f88e11199d5203e2b0fae911f00470d25bec747ac588ae191e5bc0
 
-#EXTINF:-1 tvg-id="1268" group-title="JIOTV+ | Movies" tvg-logo="https://jiotv.catchup.cdn.jio.com/dare_images/images/Zee_Talkies_HD.png",Zee Talkies HD 
+#EXTINF:-1 tvg-id="1268" group-title="JIOTV+ | Movies" tvg-logo="https://jiotv.catchup.cdn.jio.com/dare_images/images/Zee_Talkies_HD.png",Zee Talkies HD
 #KODIPROP:inputstream.adaptive.license_type=clearkey
 #KODIPROP:inputstream.adaptive.license_key=0e370273ac0f521c8ee529a886f2dc06:c2bc9f42751680a68c006986fbf2f039
 #EXTVLCOPT:http-user-agent=@watch_clarity
@@ -4461,7 +4461,7 @@ https://jiotvmblive.cdn.jio.com/bpk-tv/Swadesh_News_BTS/output/index.mpd?__hdnea
 #EXTHTTP:{"cookie":"__hdnea__=st=1773041749~exp=1773128149~acl=/*~hmac=0353d96a89f88e11199d5203e2b0fae911f00470d25bec747ac588ae191e5bc0"}
 https://jiotvmblive.cdn.jio.com/bpk-tv/ABP_Ganga_BTS/output/index.mpd?__hdnea__=st=1773041749~exp=1773128149~acl=/*~hmac=0353d96a89f88e11199d5203e2b0fae911f00470d25bec747ac588ae191e5bc0
 
-#EXTINF:-1 tvg-id="1570" group-title="JIOTV+ | News" tvg-logo="https://jiotv.catchup.cdn.jio.com/dare_images/images/Kalaignar_Seithigal_.png",Kalaignar Seithigal 
+#EXTINF:-1 tvg-id="1570" group-title="JIOTV+ | News" tvg-logo="https://jiotv.catchup.cdn.jio.com/dare_images/images/Kalaignar_Seithigal_.png",Kalaignar Seithigal
 #KODIPROP:inputstream.adaptive.license_type=clearkey
 #KODIPROP:inputstream.adaptive.license_key=b9d4acedc66c5660a1e06197a55bccd2:dd53bab1a42f41ae8f0a5c8fd286f456
 #EXTVLCOPT:http-user-agent=@watch_clarity
@@ -4706,7 +4706,7 @@ https://jiotvmblive.cdn.jio.com/bpk-tv/Tara_TV_BTS/output/index.mpd?__hdnea__=st
 #EXTHTTP:{"cookie":"__hdnea__=st=1773041749~exp=1773128149~acl=/*~hmac=0353d96a89f88e11199d5203e2b0fae911f00470d25bec747ac588ae191e5bc0"}
 https://jiotvmblive.cdn.jio.com/bpk-tv/Real_News_Kerala_BTS/output/index.mpd?__hdnea__=st=1773041749~exp=1773128149~acl=/*~hmac=0353d96a89f88e11199d5203e2b0fae911f00470d25bec747ac588ae191e5bc0
 
-#EXTINF:-1 tvg-id="1605" group-title="JIOTV+ | News" tvg-logo="https://jiotv.catchup.cdn.jio.com/dare_images/images/News_State_MPCG.png",News State MPCG 
+#EXTINF:-1 tvg-id="1605" group-title="JIOTV+ | News" tvg-logo="https://jiotv.catchup.cdn.jio.com/dare_images/images/News_State_MPCG.png",News State MPCG
 #KODIPROP:inputstream.adaptive.license_type=clearkey
 #KODIPROP:inputstream.adaptive.license_key=315efc6313da57d192381cd6d910d782:c80c552bee6a17eb494dc3561b20456f
 #EXTVLCOPT:http-user-agent=@watch_clarity
