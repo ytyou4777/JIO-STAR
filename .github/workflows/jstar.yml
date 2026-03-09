@@ -30,7 +30,7 @@ jobs:
           import sys
 
           m3u_file = "jiostar.m3u"
-          jio_worker = "https://raw.githubusercontent.com/vaathala00/jo/refs/heads/main/stream.json"
+          jio_worker = "https://raw.githubusercontent.com/pk3011/pkjtv/refs/heads/main/jtv.m3u"
           hotstar_worker = "https://voot.vodep39240327.workers.dev?voot.m3u"
 
           try:
