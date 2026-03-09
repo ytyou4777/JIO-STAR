@@ -14,8 +14,7 @@
 #EXTINF:-1 tvg-id="1368" tvg-language="Hindi" group-title="JIOTV+ | Entertainment" tvg-logo="https://jiotv.catchup.cdn.jio.com/dare_images/images/Colors_SD.png",Colors SD
 #KODIPROP:inputstream.adaptive.license_type=clearkey
 #KODIPROP:inputstream.adaptive.license_key=5727d2eea91255a3abcad8bf6e97cee6:66e77c7cf5c7f654c68f05455f44fea0
-#EXTVLCOPT:http-user-agent=#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Linux; Android 10; Mobile) AppleWebKit/537.36 Chrome/96.0.4664.45 Safari/537.36
-#EXTHTTP:{"cookie":"__hdnea__=st=1772937957~exp=1773024357~acl=/*~hmac=d43c7771d4054af99c2353d4119214b32c022e716dd521e998090e86f694f134"}
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Linux; Android 10)
 https://jiotvpllive.cdn.jio.com/bpk-tv/Colors_SD_MOB/WDVLive/index.mpd?__hdnea__=st=1772937957~exp=1773024357~acl=/*~hmac=d43c7771d4054af99c2353d4119214b32c022e716dd521e998090e86f694f134
 
 #EXTINF:-1 tvg-id="144" tvg-language="Hindi" group-title="JIOTV+ | Entertainment" tvg-logo="https://jiotv.catchup.cdn.jio.com/dare_images/images/ColorsHD.png",Colors HD
