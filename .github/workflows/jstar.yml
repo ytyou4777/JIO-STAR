@@ -2,7 +2,7 @@ name: Update JioStar Playlist
 
 on:
   schedule:
-    - cron: '*/10 * * * *' # Refreshes every 3 hours to keep Hotstar tokens active
+    - cron: '*/10 * * * *'   # runs every 10 minutes (adjust as needed)
   workflow_dispatch:
 
 jobs:
@@ -38,7 +38,7 @@ jobs:
               jio_res = requests.get(jio_worker, timeout=15)
               jio_match = re.search(r'__hdnea__=([^"\'\s&]+)', jio_res.text)
               jio_token = f"__hdnea__={jio_match.group(1)}" if jio_match else None
-                            
+
               # 2. Fetch Hotstar Data
               hs_res = requests.get(hotstar_worker, timeout=20)
               hs_match = re.search(r'hdntl=exp=[^&"\'\s]+', hs_res.text)
@@ -52,45 +52,57 @@ jobs:
                   lines = f.readlines()
 
               updated_lines = []
-              updated_headers = 0
+              updated_headers = 0   # counts Jio EXTHTTP updates (optional)
 
               for line in lines:
                   stripped = line.strip()
-                  
-                  # Skip processing if line is empty but keep it in the file
+
+                  # Skip empty lines but keep them
                   if not stripped:
                       updated_lines.append(line)
                       continue
-                                    
-                  # --- HANDLE HOTSTAR LINES ---
+
+                  # ----- HOTSTAR LINES (no change from original) -----
                   if "#EXTHTTP" in stripped and "hdntl" in stripped and hs_token:
                       updated_line = re.sub(r'hdntl=exp=[^"}]+', hs_token, stripped)
                       updated_lines.append(updated_line + "\n")
-                                    
                   elif "hotstar.com" in stripped and hs_token:
                       updated_line = re.sub(r'hdntl=exp=[^&|]+', hs_token, stripped)
                       updated_lines.append(updated_line + "\n")
 
-                  # --- HANDLE JIO LINES ---
+                  # ----- JIO LINES -----
+                  # Update the #EXTHTTP line containing __hdnea__
                   elif "#EXTHTTP" in stripped and "__hdnea__" in stripped and jio_token:
                       updated_line = re.sub(r'__hdnea__=[^"}]+', jio_token, stripped)
                       updated_lines.append(updated_line + "\n")
                       updated_headers += 1
-                      
-                  elif "jiotvbpkmob.cdn.jio.com" in stripped:
-                      clean_link = re.sub(r'([?&])__hdnea__=[^&]*', '', stripped)
-                      updated_lines.append(clean_link + "\n")
-                      
-                  # --- EVERYTHING ELSE ---
+
+                  # Update the Jio stream URL (the line after #EXTHTTP or standalone)
+                  elif "jiotvbpkmob.cdn.jio.com" in stripped or "jiotvmblive.cdn.jio.com" in stripped:
+                      if jio_token:
+                          # If URL already has __hdnea__, replace it
+                          if "__hdnea__=" in stripped:
+                              updated_line = re.sub(r'__hdnea__=[^&]+', jio_token, stripped)
+                          else:
+                              # No token present – add it with proper separator
+                              separator = '&' if '?' in stripped else '?'
+                              updated_line = stripped + separator + jio_token
+                          updated_lines.append(updated_line + "\n")
+                      else:
+                          # No token available – remove any existing __hdnea__ to avoid stale token
+                          clean_link = re.sub(r'([?&])__hdnea__=[^&]*', '', stripped)
+                          updated_lines.append(clean_link + "\n")
+
+                  # ----- EVERYTHING ELSE (keep unchanged) -----
                   else:
                       updated_lines.append(line)
 
-              # Save results back to the same file
+              # Write back the updated playlist
               with open(m3u_file, 'w', encoding='utf-8') as f:
                   f.writelines(updated_lines)
-                            
+
               print("Successfully updated Jio and Hotstar tokens in jiostar.m3u")
-              print(f"Updated {updated_headers} Jio headers.")
+              print(f"Updated {updated_headers} Jio EXTHTTP headers.")
 
           except Exception as e:
               print(f"Error: {e}")
