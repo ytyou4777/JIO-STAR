@@ -28,36 +28,22 @@ jobs:
           import re
           import os
           import sys
-          from urllib.parse import urlparse
 
           m3u_file = "jiostar.m3u"
-          jio_worker = "https://zstar.pfy.workers.dev"
+          jio_worker = "https://ztv.pfy.workers.dev/"
           hotstar_worker = "https://voot.vodep39240327.workers.dev?voot.m3u"
 
           try:
-              # ----- FETCH JIO DATA (token + base URL) -----
+              # 1. Fetch Jio Cookie
               jio_res = requests.get(jio_worker, timeout=15)
-              jio_text = jio_res.text
-
-              # Extract __hdnea__ token
-              jio_match = re.search(r'__hdnea__=([^"\'\s&]+)', jio_text)
+              jio_match = re.search(r'__hdnea__=([^"\'\s&]+)', jio_res.text)
               jio_token = f"__hdnea__={jio_match.group(1)}" if jio_match else None
 
-              # Extract the latest base URL for Jio streams
-              # Look for any URL like http(s)://something.cdn.jio.com
-              base_match = re.search(r'(https?://[a-zA-Z0-9.-]+\.cdn\.jio\.com)', jio_text)
-              new_base_url = base_match.group(1) if base_match else None
-              if new_base_url:
-                  print(f"New Jio base URL found: {new_base_url}")
-              else:
-                  print("No new base URL found in worker response – domain will not be updated.")
-
-              # ----- FETCH HOTSTAR TOKEN -----
+              # 2. Fetch Hotstar Data
               hs_res = requests.get(hotstar_worker, timeout=20)
               hs_match = re.search(r'hdntl=exp=[^&"\'\s]+', hs_res.text)
               hs_token = hs_match.group(0) if hs_match else None
 
-              # ----- READ PLAYLIST -----
               if not os.path.exists(m3u_file):
                   print(f"Error: {m3u_file} not found")
                   sys.exit(1)
@@ -66,18 +52,17 @@ jobs:
                   lines = f.readlines()
 
               updated_lines = []
-              updated_headers = 0
-              updated_domains = 0
+              updated_headers = 0   # counts Jio EXTHTTP updates (optional)
 
               for line in lines:
                   stripped = line.strip()
 
-                  # Keep empty lines
+                  # Skip empty lines but keep them
                   if not stripped:
                       updated_lines.append(line)
                       continue
 
-                  # ----- HOTSTAR LINES -----
+                  # ----- HOTSTAR LINES (no change from original) -----
                   if "#EXTHTTP" in stripped and "hdntl" in stripped and hs_token:
                       updated_line = re.sub(r'hdntl=exp=[^"}]+', hs_token, stripped)
                       updated_lines.append(updated_line + "\n")
@@ -86,27 +71,14 @@ jobs:
                       updated_lines.append(updated_line + "\n")
 
                   # ----- JIO LINES -----
-                  # First, update the domain if a new base URL was found
-                  elif "cdn.jio.com" in stripped and "jiotv" in stripped and new_base_url:
-                      # Parse the original URL to extract the path and query
-                      original_url = stripped.split()[0] if stripped.startswith('http') else stripped
-                      parsed = urlparse(original_url)
-                      # Build new URL with new base domain + original path + query
-                      new_url = new_base_url + parsed.path
-                      if parsed.query:
-                          new_url += "?" + parsed.query
-                      # Replace the URL part in the line (preserve possible trailing spaces/comments)
-                      stripped = stripped.replace(original_url, new_url)
-                      updated_domains += 1
-
                   # Update the #EXTHTTP line containing __hdnea__
-                  if "#EXTHTTP" in stripped and "__hdnea__" in stripped and jio_token:
+                  elif "#EXTHTTP" in stripped and "__hdnea__" in stripped and jio_token:
                       updated_line = re.sub(r'__hdnea__=[^"}]+', jio_token, stripped)
                       updated_lines.append(updated_line + "\n")
                       updated_headers += 1
 
                   # Update the Jio stream URL (the line after #EXTHTTP or standalone)
-                  elif "cdn.jio.com" in stripped and "jiotv" in stripped:
+                  elif "jiotvbpkmob.cdn.jio.com" in stripped or "jiotvmblive.cdn.jio.com" in stripped:
                       if jio_token:
                           # If URL already has __hdnea__, replace it
                           if "__hdnea__=" in stripped:
@@ -130,8 +102,6 @@ jobs:
                   f.writelines(updated_lines)
 
               print("Successfully updated Jio and Hotstar tokens in jiostar.m3u")
-              if new_base_url:
-                  print(f"Updated domain for {updated_domains} Jio stream URLs to {new_base_url}")
               print(f"Updated {updated_headers} Jio EXTHTTP headers.")
 
           except Exception as e:
@@ -145,8 +115,8 @@ jobs:
           git config --local user.name "github-actions[bot]"
           git add jiostar.m3u
           if git diff --cached --quiet; then
-            echo "No changes detected (Tokens and domains are already up‑to‑date)"
+            echo "No changes detected (Tokens are the same)"
             exit 0
           fi
-          git commit -m "Automated update: Refreshed Jio & Hotstar tokens and Jio base domain"
+          git commit -m "Automated update: Refreshed Jio and Hotstar tokens"
           git push
