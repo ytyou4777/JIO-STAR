@@ -69,8 +69,7 @@ https://livetv-push.hotstar.com/dash/live/2002464-b/sshd1livetvwv/master.mpd
 #EXTINF:-1 tvg-id="Star Sports Hindi 1 HD" tvg-logo="https://raw.githubusercontent.com/abusaeeidx/Tv-Channel-Logo/heads/main/CricHD/runded/1-by-xfireflix.png" group-title="  T20I World Cup",Star Sports Hindi 1 HD
 #KODIPROP:inputstream.adaptive.license_type=clearkey
 #KODIPROP:inputstream.adaptive.license_key=fe7718fbb3fb4ba78c07cc0f578744e6:624e24b1843b459fab0a949609416f0d
-#EXTVLCOPT:http-user-agent=Hotstar;in.startv.hotstar/25.02.24.8.11169 (Android/15)
-#EXTHTTP:{"Cookie":"hdntl=exp=1773650557~acl=%2f*~id=c474f1567b29321ce8d1434cb327dc4d~data=hdntl~hmac=1debcb223a40a269c6e9742289379b9c3f9362800dbcfac853d9c1b653e695a1","Origin":"https://www.hotstar.com","Referer":"https://www.hotstar.com/"}
+#EXTHTTP:{"User-Agent":"Hotstar;in.startv.hotstar/25.02.24.8.11169 (Android/15)","Cookie":"hdntl=exp=1773645783~acl=*sshindi*~id=4502c8fd7fdb3384257c518ec19728ed~data=hdntl~hmac=bc8e2b7954d9b2c568aa109378adf333967ecb465df462b10f28ce50bad2871e","Origin":"https://www.hotstar.com","Referer":"https://www.hotstar.com/"}
 https://livetv-push.hotstar.com/dash/live/2002466-b/sshindiwv/master.mpd
 
 #EXTINF:-1 tvg-logo="https://img10.hotstar.com/image/upload/f_auto,q_90,w_1920/sources/r1/cms/prod/7432/567432-h" group-title="  T20I World Cup",Star Sports HD2
